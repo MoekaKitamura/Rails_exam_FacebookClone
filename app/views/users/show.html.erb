@@ -10,6 +10,29 @@
   <%= @user.email %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Content</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.pictures.each do |picture| %>
+      <tr>
+        <td><%= link_to (image_tag picture.image.url), picture %></td>
+        <td><%= picture.content %></td>
+        <% if logged_in? %>
+          <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+          <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', new_user_path %><br>
+<%= link_to 'Delete account', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'New Picture', new_picture_path %>
