@@ -18,7 +18,7 @@
         <td><%= picture.user.name %></td>
         <td><%= link_to (image_tag picture.image.url), picture %></td>
         <td><%= picture.content %></td>
-        <% if logged_in? %>
+        <% if logged_in? && picture.user_id == current_user.id %>
           <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
           <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Picture', new_picture_path %>
+<%= link_to 'Add New Picture', new_picture_path %>

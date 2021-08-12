@@ -10,12 +10,12 @@
   </head>
 
   <body>
-      <%= link_to "index", pictures_path %>
-      <%= link_to "new picture", new_picture_path %>
+      <strong><%= link_to "FaceBookClone", pictures_path %></strong>
     <% if logged_in? %>
+      <%= link_to "new picture", new_picture_path %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <p><%= current_user.name %>さんでログイン中</p>
+      <p>Logged in as <strong> <%= link_to current_user.name, user_path(current_user.id) %></strong></p>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>

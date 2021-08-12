@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h2>About</h2>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
@@ -9,7 +10,10 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 
+<h2>Posts</h2>
 <table>
   <thead>
     <tr>
@@ -33,6 +37,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Delete account', @user, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
 <%= link_to 'New Picture', new_picture_path %>
