@@ -9,7 +9,11 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
 
   def edit
@@ -27,7 +31,7 @@ class PicturesController < ApplicationController
   def confirm
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
-    render :new if @blog.invalid?
+    render :new if @picture.invalid?
   end
 
   def update
