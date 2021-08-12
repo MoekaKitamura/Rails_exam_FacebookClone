@@ -17,31 +17,24 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-
-    respond_to do |format|
-      if @picture.save
-        redirect_to @picture, notice: "Picture was successfully created."
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @picture.save
+      redirect_to @picture, notice: "Picture was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @picture.update(picture_params)
-        redirect_to @picture, notice: "Picture was successfully updated."
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @picture.update(picture_params)
+      redirect_to @picture, notice: "Picture was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @picture.destroy
-    respond_to do |format|
-      redirect_to pictures_url, notice: "Picture was successfully destroyed."
-    end
+    redirect_to pictures_url, notice: "Picture was successfully destroyed."
   end
 
   private
