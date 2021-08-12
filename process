@@ -1,0 +1,6 @@
+rails new FacebookClone -d postgresql
+cd FacebookClone/
+rails db:create
+rails g scaffold Picture image:text content:text user:references
+rails g scaffold User name:string email:string password_digest:string
+rails db:migrate
