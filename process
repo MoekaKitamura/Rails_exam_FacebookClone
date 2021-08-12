@@ -1,6 +1,21 @@
+User: name email password_digest / users: new create show 
+なし / sessions: new create destroy
+Picture: image content user_id / pictures: new create confirm edit update index show destroy
+
+
 rails new FacebookClone -d postgresql
 cd FacebookClone/
 rails db:create
 rails g scaffold Picture image:text content:text user:references
 rails g scaffold User name:string email:string password_digest:string
 rails db:migrate
+
+#外部キーがあるPictureから作ってしまい、migrateする際にエラーになった。
+#一度pictureのmigrationを消して、userのmigrateだけをしたらうまくいった！！
+rails d migration CreatePictures
+rails db:migrate
+rails g migration CreatePictures
+rails db:migrate
+
+routing
+rails routes
