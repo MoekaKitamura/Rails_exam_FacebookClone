@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pictures#index'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, except: [:index] 
   resources :pictures do
