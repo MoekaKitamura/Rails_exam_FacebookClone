@@ -10,15 +10,32 @@
   </head>
 
   <body>
-      <strong><%= link_to "FaceBookClone", pictures_path %></strong>
+  <h2><%= link_to "FaceBookClone", pictures_path %></h2>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <%= link_to "Top", pictures_path %>
+      </li>
     <% if logged_in? %>
-      <%= link_to "new picture", new_picture_path %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <p>Logged in as <strong> <%= link_to current_user.name, user_path(current_user.id) %></strong></p>
+      <li class="nav-item">
+        <%= link_to "New Post", new_picture_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Profile", user_path(current_user.id) %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      </li>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
+      <li class="nav-item">
+        <%= link_to "Sign up", new_user_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Login", new_session_path %>
+      </li>
+    <% end %>
+    </ul>
+    <% if logged_in? %>
+      <p>Logged in as <strong> <%= link_to current_user.name, user_path(current_user.id) %></strong></p>
     <% end %>
     <%= yield %>
   </body>
