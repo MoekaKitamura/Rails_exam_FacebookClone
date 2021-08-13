@@ -17,6 +17,7 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    redirect_to pictures_path unless same_user?
   end
 
   def create
