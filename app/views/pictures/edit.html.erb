@@ -2,5 +2,5 @@
 
 <%= render 'form', picture: @picture %>
 
-<%= link_to 'Show', @picture %> |
-<%= link_to 'Top', pictures_path %>
+
+<p class="bottom"><%= link_to 'Delete this picture', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
