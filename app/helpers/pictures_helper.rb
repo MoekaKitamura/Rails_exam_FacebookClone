@@ -6,4 +6,7 @@ module PicturesHelper
           picture_path
         end
     end
+    def authenticate_user?(picture)
+      picture.user_id == current_user.id
+    end
 end

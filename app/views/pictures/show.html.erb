@@ -15,6 +15,10 @@
   <%= @picture.content %>
 </p>
 
-
+<% if logged_in? && authenticate_user?(@picture) %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %> |
+  <%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
+<br>
 <%= link_to 'Back', pictures_path %>
