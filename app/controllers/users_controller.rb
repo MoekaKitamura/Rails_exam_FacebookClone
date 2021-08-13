@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :login_required, only: [:new, :create]
-  # before_action :already_logged_in?, only: [:new, :create]
+  before_action :already_logged_in, only: [:new, :create]
   def show
   end
 
