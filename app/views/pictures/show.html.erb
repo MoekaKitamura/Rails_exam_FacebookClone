@@ -2,22 +2,27 @@
 
 <h1>Detail</h1>
 
-<div class="form">
-  <p>
-    <strong>User:</strong>
-    <%= @picture.user.name %>
-  </p>
 
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag @picture.image.url %>
-  </p>
+  <table class="detail">
+    <tr>
+      <td><strong>User:</strong></td>
+      <td><%= @picture.user.name %></td>
+      <td colspan="4"></td>
+    </tr>
+    <tr>
+      <td><strong>Image:</strong></td>
+      <td><%= image_tag @picture.image.url %></td>
+    </tr>
+    <tr>
+      <td><strong>Content:</strong></td>
+      <td><%= @picture.content %></td>
+    </tr>
+    <tr>
+      <td><strong>Posted at:</strong></td>
+      <td><%= @picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
+    </tr>
+  </table>
 
-  <p>
-    <strong>Content:</strong>
-    <%= @picture.content %>
-  </p>
-</div>
 
 <% if logged_in? && authenticate_user?(@picture) %>
   <p class="bottom"><%= link_to 'Edit', edit_picture_path(@picture) %> |

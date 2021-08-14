@@ -29,10 +29,32 @@ yarn add bootstrap@3
 app/assets/stylesheets/application.css に *= require bootstrap/dist/css/bootstrap.min (require_tree .の前)
 app/assets/javascript/application.js に //= require bootstrap/dist/js/bootstrap.min (require_tree .の前)
 
-model: has_many, validation, has_secure_password 
+model: 
+has_many, dependent: :destroy
+validation, has_secure_password 
 view: form_with >> email_field, password_fieldへ
 
 #Sessionsコントローラの作成
 rails g controller sessions new
 routing
 view new
+
+*ログアウト中
+アクセス制限(login_required) /pictures/new, pictures/3/edit ⚠️You have to log in.のアラート
+picturesのindexでedit,destroyボタンの非表示
+ログイン画面,サインアップ画面に*Password must be at least 6 characters long.と入れた。
+
+*ログイン中
+nav下にログイン中の名前表示、名前にリンクをつけてユーザー詳細画面へ遷移
+詳細画面に、そのユーザーが投稿したpost一覧を追加
+picturesのindex画面で画像にリンクをつけて詳細画面へいけるように。editボタンを•••表示に。
+destroyボタンはindex画面ではなくedit画面からアクセス
+edit,destroyボタンは他のユーザーの投稿には表示されない(same_user?メソッド)
+pictures/6/editとURLからアクセスしようとしてもindexへredirectされる
+logoutボタンの誤操作防止で、確認画面追加
+アクセス制限(already_logged_inメソッド)sessions/new, users/new
+ログイン済みの状態でログイン画面やサインアップ画面にアクセスしてもYou are already logged in. のnotice
+
+name Moeka
+email moeka@g.com
+pw 111111

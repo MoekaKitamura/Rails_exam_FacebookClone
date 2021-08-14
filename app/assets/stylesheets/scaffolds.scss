@@ -15,7 +15,7 @@ h1{
 
 header{
   text-align: left;
-  margin: 10px 20px;
+  margin: 20px 20px;
   padding-bottom: 15px;
   font-size: 3em;
 }
@@ -60,9 +60,12 @@ table{
   margin: 30px;
   width: 80%;
 }
+.detail td{
+  height: 100px;
+width: 150px;
+}
 
-
-td {
+th, td {
   padding: 10px 7px;
   margin-bottom: 10px;
 }
@@ -80,10 +83,12 @@ div {
 
 #notice {
   color: green;
+  margin-left: 20px;
 }
 
 #alert{
   color: red;
+  margin-left: 20px;
 }
 
 .field_with_errors {
@@ -96,7 +101,7 @@ div {
   width: 450px;
   border: 2px solid red;
   padding: 7px 7px 0;
-  margin-bottom: 20px;
+  margin: 20px;
   background-color: #f0f0f0;
 
   h2 {
@@ -110,6 +115,7 @@ div {
   }
 
   ul li {
+    margin-top: 5px;
     font-size: 12px;
     list-style: square;
   }

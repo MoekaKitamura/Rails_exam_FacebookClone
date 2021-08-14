@@ -24,7 +24,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
     if @picture.save
-      redirect_to @picture, notice: "Picture was successfully created."
+      redirect_to @picture, notice: "Your post was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class PicturesController < ApplicationController
 
   def update
     if @picture.update(picture_params)
-      redirect_to @picture, notice: "Picture was successfully updated."
+      redirect_to @picture, notice: "Your post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-    redirect_to pictures_url, notice: "Picture was successfully destroyed."
+    redirect_to pictures_url, notice: "Your post was successfully deleted."
   end
 
   private
